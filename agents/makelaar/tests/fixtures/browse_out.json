@@ -1,0 +1,5 @@
+{"source": "example", "listings": [
+  {"source_id": "b123", "url": "https://example.com/listing/b123",
+   "title": "Room in Oud-West", "price_eur": 850, "housing_type": "shared",
+   "area": "Oud-West", "registration": true, "description": "Nice room, registration possible"}
+]}

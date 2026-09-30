@@ -1,0 +1,15 @@
+[
+  {"source": "fixture", "source_id": "sublet_room", "url": "u1",
+   "title": "Room available July-August in Amsterdam West",
+   "description": "Looking for someone to sublet my room July 5th-August 16th. No registration. Located near a park.",
+   "price_eur": 1500, "housing_type": "shared", "area": "Amsterdam West"},
+  {"source": "fixture", "source_id": "noreg", "url": "u2",
+   "title": "Studio Oud-West", "description": "Mooie studio, inschrijven niet mogelijk",
+   "price_eur": 1200, "housing_type": "solo", "area": "Oud-West"},
+  {"source": "fixture", "source_id": "swap", "url": "u3",
+   "title": "3-kamer Rivierenbuurt", "description": "Woningruil aangeboden",
+   "price_eur": 1100, "housing_type": "solo", "area": "Rivierenbuurt"},
+  {"source": "fixture", "source_id": "good", "url": "u4",
+   "title": "Studio De Pijp", "description": "Lichte studio, inschrijving mogelijk, vast contract",
+   "price_eur": 1150, "housing_type": "solo", "area": "De Pijp", "registration": true}
+]

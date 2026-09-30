@@ -1,0 +1,131 @@
+// .stignore for the control-center repo Syncthing folder.
+// Put it at C:\Users\<you>\<your-repo>\.stignore on the laptop (authoritative: blocks upload)
+// BEFORE the first share, AND at ~/repo-mirror/.stignore on the server (defense in
+// depth; internally excluded, so it never shows as a receive-only local addition).
+// Syntax: '//' starts a comment; bare names prune whole subtrees at any depth;
+// (?i) = case-insensitive (Windows always is, the Linux side needs the prefix);
+// (?d) = may be deleted if blocking a dir deletion. Avoid negation patterns
+// ('!'): they force a full traversal.
+// Adding a pattern later does NOT remove files that already synced: delete those
+// stragglers on the server by hand.
+
+// ---- secrets: never leave the laptop ----
+(?i).env
+(?i).env.*
+(?i)*.env
+(?i)*.pem
+(?i)*.key
+(?i)*.p12
+(?i)*.pfx
+(?i)*.jks
+(?i)*.keystore
+(?i)id_rsa*
+(?i)id_ed25519*
+(?i)id_ecdsa*
+(?i)id_dsa*
+(?i).ssh
+(?i).gnupg
+(?i).aws
+(?i).kube
+(?i).docker
+(?i)*kubeconfig*
+(?i).envrc
+(?i).pgpass
+(?i)*credential*
+(?i)*secret*
+(?i)*.htpasswd
+(?i)*apikey*
+(?i)*.tfstate
+(?i)*.tfstate.*
+(?i)*.tfvars
+(?i)service-account*.json
+(?i)*-adminsdk*.json
+(?i)client_secret*.json
+(?i).git-credentials
+(?i).npmrc
+(?i).pypirc
+(?i).netrc
+(?i)_netrc
+(?i)*.ppk
+(?i)*.p8
+(?i)*.ovpn
+(?i)*.gpg
+(?i)*.asc
+(?i)*.sqlite
+(?i)*.sqlite3
+(?i)*.db
+// config backups (a *.bak copy of a config often embeds its keys)
+(?i)*.bak
+(?i)*.bak.*
+(?i)access.json
+(?i)*.session
+
+// ---- dependency / VCS / build bloat (typically shrinks a projects folder from GBs to MBs) ----
+(?i)node_modules
+(?i)bower_components
+(?i).git
+(?i).git.backup*
+(?i).hg
+(?i).svn
+(?i)__pycache__
+(?i)*.pyc
+(?i).venv
+(?i)venv
+(?i)env
+(?i).tox
+(?i).conda
+(?i)dist
+(?i)build
+(?i).next
+(?i).nuxt
+(?i).expo
+(?i).turbo
+(?i).cache
+(?i).parcel-cache
+(?i).pytest_cache
+(?i).mypy_cache
+(?i).ruff_cache
+(?i).gradle
+(?i)target
+(?i)coverage
+(?i)*.egg-info
+(?i).ipynb_checkpoints
+
+// ---- heavy media / archives / binaries (agent can't read them anyway) ----
+(?i)*.mp4
+(?i)*.mov
+(?i)*.avi
+(?i)*.mkv
+(?i)*.iso
+(?i)*.zip
+(?i)*.7z
+(?i)*.tar.gz
+(?i)*.dmg
+(?i)*.exe
+(?i)*.msi
+(?i)*.dll
+(?i)*.pkl
+(?i)*.h5
+(?i)*.ckpt
+(?i)*.safetensors
+(?i)*.parquet
+
+// ---- OS / editor junk ----
+(?d)(?i)Thumbs.db
+(?d)(?i)desktop.ini
+(?d)(?i).DS_Store
+(?d)(?i)*.tmp
+(?d)(?i)~$*
+// Windows reserved device name: a stray file called "nul" breaks tooling
+(?i)nul
+
+// ---- repo specific ----
+// The inbound lane (server -> laptop) lives INSIDE this repo as its own
+// receive-only folder. The parent must never touch it: this line is load-bearing.
+// Re-check it after ANY Syncthing folder change, or the parent starts syncing the
+// agent's lane back up into the mirror. Rename to match your inbound folder.
+/from-agent
+
+// ---- your own private folders (examples; uncomment and adapt) ----
+// /your-confidential-folder
+// /employer-notes
